@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,16 +10,19 @@ public class MainManager : MonoBehaviour
 
     public Text ScoreText;
     public GameObject GameOverText;
-    
-    private bool m_Started = false;
-    private int m_Points;
-    
-    private bool m_GameOver = false;
 
+    [SerializeField] private HighScore HighScoreScript;
     
-    // Start is called before the first frame update
+    public int Points { get; private set; }
+    public bool isGameOver { get; private set; }
+    
+
+    private bool m_Started = false;
+    
     void Start()
     {
+        isGameOver = false;
+        
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -53,7 +54,7 @@ public class MainManager : MonoBehaviour
                 Ball.AddForce(forceDir * 2.0f, ForceMode.VelocityChange);
             }
         }
-        else if (m_GameOver)
+        else if (isGameOver)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -64,13 +65,15 @@ public class MainManager : MonoBehaviour
 
     void AddPoint(int point)
     {
-        m_Points += point;
-        ScoreText.text = $"Score : {m_Points}";
+        Points += point;
+        ScoreText.text = $"Score : {Points}";
+        
+        HighScoreScript.AddNewHighScoreEntryIfGreater();
     }
 
     public void GameOver()
     {
-        m_GameOver = true;
+        isGameOver = true;
         GameOverText.SetActive(true);
     }
 }
