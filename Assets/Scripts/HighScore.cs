@@ -29,42 +29,44 @@ public class HighScore : MonoBehaviour
     {
         for (int index = 0; index < _highScoreEntries.table.Length; index++)
         {
-            if (mainManagerScript.Points > _highScoreEntries.table[index].highScore)
+            // If a high score entry already exists, update it if it has a greater high score value.
+            if (DoHighScoreEntryAlreadyExist())
             {
-                if (!_startMenuData.playerName.Equals(_highScoreEntries.table[index].playerName))
-                {
-                    List<HighScoreEntries.SingleScoreEntry> list = _highScoreEntries.table.ToList();
-
-                    list.Insert(index,
-                        new HighScoreEntries.SingleScoreEntry(mainManagerScript.Points, _startMenuData.playerName));
-
-                    // Remove the smallest value in the list.
-                    list.Remove(list.Last());
-
-                    _highScoreEntries.table = list.ToArray();
-
-                    SaveHighScoreEntries();
-                    ShowHighScoreTable();
-
-                    index = 4;
-                }
-
-                else if (_startMenuData.playerName.Equals(_highScoreEntries.table[index].playerName))
+                if (mainManagerScript.Points > _highScoreEntries.table[index].highScore && _startMenuData.playerName.Equals(_highScoreEntries.table[index].playerName))
                 {
                     _highScoreEntries.table[index].highScore = mainManagerScript.Points;
-                
-                    SaveHighScoreEntries();
-                    ShowHighScoreTable();
-                
-                    index = 4;
                 }
             }
-            
-            else if (_startMenuData.playerName.Equals(_highScoreEntries.table[index].playerName))
+
+            // If a high score entry doesn't exist, insert it to the high score entries and delete the smallest high score.
+            else if (mainManagerScript.Points > _highScoreEntries.table[index].highScore)
             {
-                index = 4;
+                List<HighScoreEntries.SingleScoreEntry> list = _highScoreEntries.table.ToList();
+
+                list.Insert(index,
+                    new HighScoreEntries.SingleScoreEntry(mainManagerScript.Points, _startMenuData.playerName));
+
+                list.Remove(list.Last());
+
+                _highScoreEntries.table = list.ToArray();
+            }
+            
+            SaveHighScoreEntries();
+            ShowHighScoreTable();
+        }
+    }
+
+    private bool DoHighScoreEntryAlreadyExist()
+    {
+        foreach (var singleHighScoreEntry in _highScoreEntries.table.ToList())
+        {
+            if (singleHighScoreEntry.playerName.Equals(_startMenuData.playerName))
+            {
+                return true;
             }
         }
+
+        return false;
     }
 
     private void ShowHighScoreTable()
