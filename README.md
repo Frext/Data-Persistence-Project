@@ -20,8 +20,14 @@ Want to skip the code and just play?
 
 | Key | Action |
 | :---: | :--- |
-| **A / D** | Move Horizontally |
+| **A / D** or **Left / Right Arrow** | Move Horizontally |
 | **SPACE** | Launch Ball |
+
+---
+
+## 🎬 Gameplay Preview
+
+https://github.com/user-attachments/assets/ca5e899a-68b1-4556-8184-157a0aab1368
 
 ---
 
@@ -35,7 +41,7 @@ Want to skip the code and just play?
 
 ## 💾 Data Persistence Features
 
-* **Save/Load System:** Persist player progress and game state between sessions.
+* **Save/Load System:** Persist player progress between sessions.
 * **Leaderboard:** Track and display high scores locally.
 * **Data Serialization:** Efficient storage and retrieval of game data using JSON.
 
