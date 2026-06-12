@@ -33,9 +33,13 @@ https://github.com/user-attachments/assets/ca5e899a-68b1-4556-8184-157a0aab1368
 
 ## 📸 Screenshots
 
-| Main Menu | Controls |
+| Main Menu | Game Start |
 |:---:|:---:|
-| <img src="" alt=""/> | <img src="" alt=""/> |
+| <img src="https://github.com/user-attachments/assets/ad029f38-d1f5-40b4-9da8-dd0ecb9ecf98" alt="Main Menu"/> | <img src="https://github.com/user-attachments/assets/8fdd4754-d782-463e-87d5-d680dd66301c" alt="Game Start"/> |
+
+| Gameplay | Game Over |
+|:---:|:---:|
+| <img src="https://github.com/user-attachments/assets/79555c6f-0ff2-4b63-80ca-96db77d34fab" alt="Gameplay"/> | <img src="https://github.com/user-attachments/assets/7c9c3002-791d-4d9e-95c2-3cbfa57ae1d6" alt="Game Over"/> |
 
 ---
 
